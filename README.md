@@ -49,7 +49,56 @@ A **professional security audit** is planned before the mainnet launch to ensure
 
 ## Project Category
 
-**Category:** Infrastructure / DePIN / Clean Energy  
+**Category:** Infrastructure / DePIN / Clean Energy
+
+## Deployment & Usage
+
+This section outlines how to set up and interact with the SunChain prototype using the Solana and Anchor frameworks.  
+*(Note: The following commands use placeholder examples. Replace them with actual program paths and IDs once your smart contracts are ready.)*  
+
+### Prerequisites
+Before deployment, ensure you have the following installed:  
+- [Solana CLI](https://docs.solana.com/cli/install-solana-cli) (v1.18 or higher)  
+- [Anchor Framework](https://book.anchor-lang.com/chapter_2/installation.html)  
+- Node.js (v18 or higher)  
+- Yarn or npm package manager  
+
+### 1. Clone the Repository
+```bash
+git clone https://github.com/<your-username>/SunChain.git
+cd SunChain
+```
+
+### 2. Configure Solana Environment
+```bash
+solana config set --url https://api.devnet.solana.com
+solana-keygen new --outfile ~/.config/solana/id.json
+```
+
+### 3. Build and Deploy Smart Contracts
+```bash
+anchor build
+anchor deploy
+```
+After deployment, take note of the **Program ID** and update it in your frontend `.env` file.
+
+### 4. Start the Frontend
+```bash
+cd app
+yarn install
+yarn dev
+```
+Visit `http://localhost:3000` to access the SunChain dashboard.
+
+### 5. Testing IoT Data Flow (Placeholder Example)
+```bash
+curl -X POST https://api.sunchain.energy/upload -H "Content-Type: application/json" -d '{
+  "hub_id": "HUB001",
+  "energy_generated": 12.5,
+  "energy_consumed": 9.8
+}'
+```
+*(This simulates IoT data being pushed to the Solana program through an API endpoint.)*
 
 ## 🚀 Roadmap
 
